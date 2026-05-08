@@ -8,6 +8,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<AIEducationLanding />} />
         <Route path='/curriculum' element={<ProgramCurriculum />} />
+        <Route path='/program-curriculum' element={<ProgramCurriculum />} />
       </Routes>
     </BrowserRouter>
   );
