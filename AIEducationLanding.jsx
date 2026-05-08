@@ -1,20 +1,11 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Target, Users, Award, BookOpen, TrendingUp } from 'lucide-react';
-import { theme, behavior } from '../styles/theme';
-import { LogoHorizontal } from '../components/branding/Logo';
+import { theme, behavior } from './theme';
+import { LogoHorizontal } from './Logo';
+import { useExternalScript } from './useExternalScript';
 
 export function AIEducationLanding() {
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/buy-button.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  useExternalScript('https://js.stripe.com/v3/buy-button.js');
 
   const curriculumWeeks = [
     { week: 1, title: 'What is AI', description: 'Foundations of Artificial Intelligence' },

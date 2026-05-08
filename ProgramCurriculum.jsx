@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
-import { theme, behavior } from '../styles/theme';
-import { LogoHorizontal } from '../components/branding/Logo';
-import { FeaturesTable } from '../components/features/FeaturesTable';
-import { modulesData } from '../data/modulesData';
-import { activityData } from '../data/activityData';
+import { theme, behavior } from './theme';
+import { LogoHorizontal } from './Logo';
+import { useExternalScript } from './useExternalScript';
+import { FeaturesTable } from './FeaturesTable';
+import { modulesData } from './modulesData';
+import { activityData } from './activityData';
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning. Understanding is a necessity, not a destination.",
@@ -21,16 +22,7 @@ const moduleNarratives = [
 export function ProgramCurriculum() {
   const [expandedModule, setExpandedModule] = useState(null);
 
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/buy-button.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  useExternalScript('https://js.stripe.com/v3/buy-button.js');
 
   const toggleModule = (moduleId) => {
     setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
