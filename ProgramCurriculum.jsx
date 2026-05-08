@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ChevronDown } from 'lucide-react';
 import { theme, behavior } from './theme';
 import { LogoHorizontal } from './Logo';
+import { useExternalScript } from './useExternalScript';
 import { FeaturesTable } from './FeaturesTable';
 import { modulesData } from './modulesData';
 import { activityData } from './activityData';
@@ -21,16 +22,7 @@ const moduleNarratives = [
 export function ProgramCurriculum() {
   const [expandedModule, setExpandedModule] = useState(null);
 
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/buy-button.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  useExternalScript('https://js.stripe.com/v3/buy-button.js');
 
   const toggleModule = (moduleId) => {
     setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
