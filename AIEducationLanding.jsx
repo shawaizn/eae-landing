@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Target, Users, Award, BookOpen, TrendingUp } from 'lucide-react';
-import { theme, behavior } from '../styles/theme';
-import { LogoHorizontal } from '../components/branding/Logo';
+import { theme, behavior } from './theme';
+import { LogoHorizontal } from './Logo';
 
 export function AIEducationLanding() {
   useEffect(() => {
